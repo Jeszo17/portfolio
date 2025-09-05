@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>XY – Portfolio</title>
+  <meta name="description" content="Freelancer webfejlesztő portfólió – projektek, szolgáltatások, kapcsolat."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0f14;          /* háttér */
+      --panel:#0f151d;       /* kártyák */
+      --text:#d9e1ea;        /* alap szöveg */
+      --muted:#9fb0c3;       /* halvány */
+      --brand:#5ac8fa;       /* fő szín */
+      --brand-2:#7ef6d7;     /* kiegészítő */
+      --accent:#ffd166;      /* hangsúly */
+      --red:#ff6b6b;         /* hibák */
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius-lg: 26px;
+      --container: 1100px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; background:radial-gradient(1200px 600px at 100% -10%, rgba(90,200,250,0.08), transparent 60%),
+      radial-gradient(1000px 600px at -10% 10%, rgba(126,246,215,0.08), transparent 60%), var(--bg);
+      color:var(--text); font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif; line-height:1.6;
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{max-width:var(--container); margin:0 auto; padding:0 20px}
+    /* ---------------- NAV ---------------- */
+    header{position:sticky; top:0; z-index:20; backdrop-filter:saturate(120%) blur(10px); background:rgba(11,15,20,.55); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:64px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700}
+    .logo{width:34px; height:34px; background:linear-gradient(135deg,var(--brand),var(--brand-2)); border-radius:10px; display:inline-grid; place-items:center; box-shadow:var(--shadow)}
+    .logo span{font-family:Montserrat,Inter,sans-serif; color:#001019; font-weight:800}
+    nav ul{display:flex; gap:20px; list-style:none; padding:0; margin:0}
+    .nav a{border-radius:999px; padding:8px 14px; color:var(--muted)}
+    .nav a:hover{color:var(--text); background:rgba(255,255,255,.06)}
+    .mobile-toggle{display:none; border:1px solid rgba(255,255,255,.12); background:transparent; color:var(--text); padding:8px 12px; border-radius:10px}
+    /* ---------------- HERO ---------------- */
+    .hero{padding:90px 0 40px}
+    .hero-inner{display:grid; grid-template-columns:1.15fr 0.85fr; gap:36px; align-items:center}
+    .eyebrow{display:inline-flex; align-items:center; gap:8px; color:var(--brand); font-weight:600; background:rgba(90,200,250,.12); border:1px solid rgba(90,200,250,.25); padding:6px 10px; border-radius:999px}
+    h1{font-family:Montserrat,Inter,sans-serif; font-size:clamp(34px, 6vw, 54px); line-height:1.08; margin:16px 0; letter-spacing:0.2px}
+    .lead{color:var(--muted); font-size:1.05rem}
+    .cta{display:flex; gap:12px; margin-top:22px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:var(--panel); color:var(--text); font-weight:600; cursor:pointer; transition:.2s transform, .2s background}
+    .btn:hover{transform:translateY(-2px)}
+    .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand-2)); color:#07222a; border:none}
+    .stats{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:24px}
+    .stat{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0)); border:1px solid rgba(255,255,255,.08); padding:14px; border-radius:14px; text-align:center}
+    .stat strong{display:block; font-size:1.2rem}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0)); border:1px solid rgba(255,255,255,.09); border-radius:var(--radius-lg); padding:20px; box-shadow:var(--shadow)}
+    .hero-card .grid{display:grid; gap:10px}
+    .hero-tag{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:rgba(255,209,102,.12); border:1px solid rgba(255,209,102,.3); color:var(--accent); font-weight:600; width:max-content}
+    /* ---------------- SECTIONS ---------------- */
+    section{padding:70px 0}
+    .section-head{display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom:22px}
+    .section-title{font-family:Montserrat,Inter,sans-serif; font-size:28px; margin:0}
+    .kicker{color:var(--muted)}
+    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .card{background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .card h3{margin:8px 0 6px}
+    .muted{color:var(--muted)}
+    /* About grid */
+    .about{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+    .timeline{display:grid; gap:12px}
+    .tl-item{padding:14px; border:1px dashed rgba(255,255,255,.12); border-radius:14px}
+    /* Skills grid */
+    .skills{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
+    .skill{padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,0)); display:flex; align-items:center; gap:10px}
+    .dot{width:10px; height:10px; border-radius:50%; background:var(--brand)}
+    /* Projects */
+    .projects{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .project{border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03)}
+    .project .meta{padding:12px 14px}
+    .project .tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:6px}
+    .tag{font-size:.8rem; color:var(--brand); background:rgba(90,200,250,.08); border:1px solid rgba(90,200,250,.22); padding:4px 8px; border-radius:999px}
+    .project img{aspect-ratio: 16/10; object-fit:cover; width:100%}
+    /* Contact */
+    form{display:grid; gap:12px}
+    input, textarea{width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.14); background:#0b1117; color:var(--text)}
+    input::placeholder, textarea::placeholder{color:#6f7f92}
+    .form-row{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    .form-note{color:var(--muted); font-size:.9rem}
+    .error{color:var(--red); font-size:.92rem; display:none}
+    footer{padding:30px 0; color:var(--muted); border-top:1px solid rgba(255,255,255,.08)}
+    /* ------- Responsive ------- */
+    @media (max-width: 980px){
+      .hero-inner{grid-template-columns:1fr}
+      .stats{grid-template-columns:repeat(3,1fr)}
+      .cards{grid-template-columns:1fr 1fr}
+      .projects{grid-template-columns:1fr 1fr}
+      .about{grid-template-columns:1fr}
+      .skills{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 640px){
+      nav ul{display:none}
+      .mobile-toggle{display:inline-block}
+      .stats{grid-template-columns:1fr 1fr}
+      .cards, .projects, .skills{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <header>
+    <div class="container nav">
+      <a href="#home" class="brand">
+        <div class="logo" aria-hidden="true"><span>BJ</span></div>
+        <span>Portfolio</span>
+      </a>
+      <nav>
+        <button class="mobile-toggle" aria-expanded="false" aria-controls="mobileMenu" id="menuBtn">Menu</button>
+        <ul id="desktopMenu">
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#about">About me</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU (simple) -->
+  <div id="mobileMenu" hidden style="border-bottom:1px solid rgba(255,255,255,.08); background:rgba(11,15,20,.95)">
+    <div class="container" style="padding:10px 20px 20px">
+      <a class="nav" style="display:block; padding:8px 0; color:var(--muted)" href="#projects">Projects</a>
+      <a class="nav" style="display:block; padding:8px 0; color:var(--muted)" href="#services">Services</a>
+      <a class="nav" style="display:block; padding:8px 0; color:var(--muted)" href="#skills">Skills</a>
+      <a class="nav" style="display:block; padding:8px 0; color:var(--muted)" href="#about">About me</a>
+      <a class="nav" style="display:block; padding:8px 0; color:var(--muted)" href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container hero-inner">
+      <div>
+        <span class="eyebrow">Freelancer Web Developer</span>
+        <h1>Hi! I am <span style="color:var(--brand)">Bence</span> – IT Specialist & Web developer </h1>
+        <p class="lead">Responsive websites, internal tools, and building the online presence of small businesses. Clean code, fast loading, easy maintainability.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">Take a look my works</a>
+          <a class="btn" href="#contact">Request a quote</a>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>20+ project</strong><span class="muted">Web page & mini-applications</span></div>
+          <div class="stat"><strong>5★</strong><span class="muted">100% customer satisfaction.</span></div>
+          <div class="stat"><strong>24–48h</strong><span class="muted">Response time</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="hero-card">
+          <span class="hero-tag">Featured Services</span>
+          <div class="grid">
+            <div class="card" style="margin:0">
+              <h3>Lightning-fast landing pages</h3>
+              <p class="muted">Modern, conversion-optimized one-page websites delivered in just 1–2 weeks — with easily editable content, no admin panel needed.</p>
+            </div>
+            <div class="card" style="margin:0">
+              <h3>Process automatization</h3>
+              <p class="muted">Factory/office IT support, process simplification, and development of internal tools (ticketing, dashboards, training materials).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Szolgáltatások</h2>
+        <p class="kicker">Amiben segítek</p>
+      </div>
+      <div class="cards">
+        <div class="card"><h3>Webfejlesztés</h3><p class="muted">Reszponzív, gyors és biztonságos weboldalak – statikus vagy dinamikus (PHP/Node) alapon.</p></div>
+        <div class="card"><h3>UI implementáció</h3><p class="muted">Designból élő kód: komponensek, animációk, űrlapok, hozzáférhetőség.</p></div>
+        <div class="card"><h3>Integrációk</h3><p class="muted">Űrlap → email/Google Sheet, fizetés, térkép, analitika, alap SEO.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Tech stack & skillek</h2>
+        <p class="kicker">Amihez értek</p>
+      </div>
+      <div class="skills">
+        <div class="skill"><span class="dot"></span><strong>HTML5</strong><span class="muted">/ szemantika</span></div>
+        <div class="skill"><span class="dot"></span><strong>CSS3</strong><span class="muted">/ Flex, Grid</span></div>
+        <div class="skill"><span class="dot"></span><strong>JavaScript (ES6+)</strong><span class="muted">/ komponensek</span></div>
+        <div class="skill"><span class="dot"></span><strong>Bootstrap / Tailwind</strong><span class="muted">/ UI</span></div>
+        <div class="skill"><span class="dot"></span><strong>PHP</strong><span class="muted">/ űrlap backend</span></div>
+        <div class="skill"><span class="dot"></span><strong>MySQL</strong><span class="muted">/ lekérdezések</span></div>
+        <div class="skill"><span class="dot"></span><strong>Git</strong><span class="muted">/ GitHub flow</span></div>
+        <div class="skill"><span class="dot"></span><strong>Postman</strong><span class="muted">/ API teszt</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Projektek</h2>
+        <p class="kicker">Válogatás munkáimból</p>
+      </div>
+      <div class="projects">
+        <!-- PROJEKT 1 -->
+        <article class="project">
+          <img src="https://picsum.photos/800/500?random=11" alt="Projekt előnézet 1" loading="lazy" />
+          <div class="meta">
+            <h3>Raktári Dashboard</h3>
+            <p class="muted">Valós idejű készlet és státusz kijelzés; gyors szűrés, export, jogosultságok.</p>
+            <div class="tags">
+              <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Chart</span>
+            </div>
+          </div>
+        </article>
+        <!-- PROJEKT 2 -->
+        <article class="project">
+          <img src="https://picsum.photos/800/500?random=12" alt="Projekt előnézet 2" loading="lazy" />
+          <div class="meta">
+            <h3>Landing oldal – KKV</h3>
+            <p class="muted">Konverzióra optimalizált mikrosite, hőtérképes elemzésekkel és A/B teszttel.</p>
+            <div class="tags">
+              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span>
+            </div>
+          </div>
+        </article>
+        <!-- PROJEKT 3 -->
+        <article class="project">
+          <img src="https://picsum.photos/800/500?random=13" alt="Projekt előnézet 3" loading="lazy" />
+          <div class="meta">
+            <h3>Űrlap → Google Sheet</h3>
+            <p class="muted">Lead gyűjtés, validáció, spamvédelem, automatikus visszaigazoló email.</p>
+            <div class="tags">
+              <span class="tag">Node</span><span class="tag">API</span><span class="tag">Automation</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Rólam</h2>
+        <p class="kicker">Ki vagyok és mit csinálok?</p>
+      </div>
+      <div class="about">
+        <div class="card">
+          <h3>Bemutatkozás</h3>
+          <p class="muted">Mérnökinformatikus háttérrel, több mint 5 év IT támogatási és webes fejlesztési tapasztalattal. Szeretem a letisztult felületeket, a gyors oldalakat és az egyszerű folyamatokat – a technika a célt szolgálja, nem fordítva.</p>
+          <ul>
+            <li>📍 Budapest / távoli munka</li>
+            <li>⚙️ IT & SAP key user tapasztalat</li>
+            <li>🏍️ Hosszútáv: skálázható belső eszközök</li>
+          </ul>
+        </div>
+        <div class="timeline">
+          <div class="tl-item">
+            <strong>2025 — jelenleg</strong>
+            <p class="muted">Freelancer / part-time fejlesztés és IT támogatás.</p>
+          </div>
+          <div class="tl-item">
+            <strong>2020–2024</strong>
+            <p class="muted">IT helpdesk & belső eszközfejlesztés (automatizálás, dashboardok).</p>
+          </div>
+          <div class="tl-item">
+            <strong>Tanulmányok</strong>
+            <p class="muted">Mérnökinformatika – webprogramozás, adatbázisok, hálózatok.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Kapcsolat</h2>
+        <p class="kicker">Írj üzenetet – általában 24 órán belül válaszolok</p>
+      </div>
+      <div class="about">
+        <div class="card">
+          <h3>Elérhetőségek</h3>
+          <p class="muted">Email: <a href="mailto:hello@example.com">hello@example.com</a><br>LinkedIn: <a href="#" target="_blank" rel="noopener">linkedin.com/in/teprofilod</a><br>GitHub: <a href="#" target="_blank" rel="noopener">github.com/tefelhasznalo</a></p>
+          <p class="form-note">*Az űrlap demonstráció: kliens oldali validációval. Szerveroldali továbbítás (PHP) könnyen hozzáadható.</p>
+        </div>
+        <div class="card">
+          <h3>Üzenetküldés</h3>
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div>
+                <label for="name">Név</label>
+                <input id="name" name="name" type="text" placeholder="Teljes név" required />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="valaki@email.com" required />
+              </div>
+            </div>
+            <div>
+              <label for="message">Üzenet</label>
+              <textarea id="message" name="message" rows="5" placeholder="Miben segíthetek?" required></textarea>
+            </div>
+            <p class="error" id="formError">Kérlek tölts ki minden mezőt helyesen.</p>
+            <button class="btn primary" type="submit">Küldés</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap">
+      <span>© <span id="year"></span> XY – Minden jog fenntartva.</span>
+      <span class="muted">Készült: HTML • CSS • JS</span>
+    </div>
+  </footer>
+
+  <script>
+    // év aktualizálása
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobil menü toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if(menuBtn){
+      menuBtn.addEventListener('click', () => {
+        const open = mobileMenu.hasAttribute('hidden') === false;
+        if(open){
+          mobileMenu.setAttribute('hidden','');
+          menuBtn.setAttribute('aria-expanded','false');
+        } else {
+          mobileMenu.removeAttribute('hidden');
+          menuBtn.setAttribute('aria-expanded','true');
+        }
+      });
+    }
+
+    // Egyszerű kliens oldali űrlap validáció
+    const form = document.getElementById('contactForm');
+    const err = document.getElementById('formError');
+    if(form){
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const message = form.message.value.trim();
+        const validEmail = /[^@\s]+@[^@\s]+\.[^@\s]+/.test(email);
+        if(!name || !validEmail || message.length < 5){
+          err.style.display = 'block';
+          return;
+        }
+        err.style.display = 'none';
+        // Demo küldés – itt lehetne fetch('/contact.php', {method:'POST', body:...})
+        alert('Köszönöm! Üzenetedet megkaptam. Hamarosan válaszolok.');
+        form.reset();
+      });
+    }
+  </script>
+</body>
+</html>
