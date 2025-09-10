@@ -77,7 +77,7 @@
     .skill{padding:12px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,0)); display:flex; align-items:center; gap:10px}
     .dot{width:10px; height:10px; border-radius:50%; background:var(--brand)}
     /* Projects */
-    .projects{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .projects{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
     .project{border-radius:16px; overflow:hidden; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03)}
     .project .meta{padding:12px 14px}
     .project .tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:6px}
@@ -184,7 +184,7 @@
       </div>
       <div class="cards">
         <div class="card"><h3>Web development</h3><p class="muted">Responsive, fast, and secure websites – built on static or dynamic (PHP/Node) platforms.</p></div>
-        <div class="card"><h3>UI implementáció</h3><p class="muted">Design translated into code: components, animations, forms, accessibility.</p></div>
+        <div class="card"><h3>UI implementation</h3><p class="muted">Design translated into code: components, animations, forms, accessibility.</p></div>
         <div class="card"><h3>Integrations</h3><p class="muted">Forms → email/Google Sheets, payment systems, maps, analytics, basic SEO..</p></div>
       </div>
     </div>
@@ -219,38 +219,37 @@
       </div>
       <div class="projects">
         <!-- PROJEKT 1 -->
-        <article class="project">
-          <img src="https://picsum.photos/800/500?random=11" alt="Projekt előnézet 1" loading="lazy" />
-          <div class="meta">
-            <h3>Warehouse Dashboard</h3>
-            <p class="muted">Real-time inventory and status tracking; fast filtering, export, and access control.</p>
-            <div class="tags">
-              <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Chart</span>
-            </div>
-          </div>
-        </article>
+		<article class="project">
+		  <img src="media-admin-preview.png" alt="Videólejátszó rendszer előnézet" loading="lazy" />
+		  <div class="meta">
+			<h3>Internal Video Playback System</h3>
+			<p class="muted">Web-based solution for centrally controlled video playback on facility TV's via a local Apache server with admin panel, login, sorting, and logging.</p>
+		  <div class="tags">
+			<span class="tag">PHP</span>
+			<span class="tag">Apache</span>
+			<span class="tag">Local Network</span>
+			<span class="tag">Automation</span>
+		  </div>
+  </div>
+</article>
+
         <!-- PROJEKT 2 -->
-        <article class="project">
-          <img src="https://picsum.photos/800/500?random=12" alt="Projekt előnézet 2" loading="lazy" />
-          <div class="meta">
-            <h3>Landing page – KKV</h3>
-            <p class="muted">Conversion-optimized microsite with heatmap analysis and A/B testing.</p>
-            <div class="tags">
-              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span>
-            </div>
-          </div>
-        </article>
-        <!-- PROJEKT 3 -->
-        <article class="project">
-          <img src="https://picsum.photos/800/500?random=13" alt="Projekt előnézet 3" loading="lazy" />
-          <div class="meta">
-            <h3>Form → Google Sheet</h3>
-            <p class="muted">Lead generation, validation, spam protection, automated confirmation emails.</p>
-            <div class="tags">
-              <span class="tag">Node</span><span class="tag">API</span><span class="tag">Automation</span>
-            </div>
-          </div>
-        </article>
+		<article class="project">
+		  <img src="automation-vm-preview.png" alt="Automation workflow preview" loading="lazy" />
+		  <div class="meta">
+			<h3>Email Attachment Automation</h3>
+			<p class="muted">
+			  Daily automation system built on a virtual machine to process incoming Excel attachments via Outlook macros, saving, formatting, and uploading them to OneDrive for the finance department.
+			</p>
+			<div class="tags">
+			  <span class="tag">VBA</span>
+			  <span class="tag">Outlook Macro</span>
+			  <span class="tag">Automation</span>
+			  <span class="tag">Excel</span>
+			  <span class="tag">VBScript</span>
+			</div>
+		  </div>
+		</article>
       </div>
     </div>
   </section>
@@ -264,7 +263,7 @@
       </div>
       <div class="about">
         <div class="card">
-          <h3>Bemutatkozás</h3>
+          <h3>Introduction</h3>
           <p class="muted">With a background in engineering informatics and over 5 years of experience in IT support and web development. I enjoy creating clean interfaces, fast websites, and simple processes – technology should serve the goal, not the other way around.</p>
           <ul>
             <li>📍 Budapest / Hibrid work</li>
