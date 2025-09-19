@@ -18,5 +18,5 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /public_html/jeszocode.com/
+          server-dir: /jeszocode.com/
           local-dir: ./  # ha van /dist, ide írd azt
