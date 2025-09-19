@@ -1,0 +1,22 @@
+name: 🚀 Deploy to Rackhost via FTP
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout source code
+        uses: actions/checkout@v2
+
+      - name: 🔄 FTP Upload
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /public_html/jeszocode.com/
+          local-dir: ./  # ha van /dist, ide írd azt
