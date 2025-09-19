@@ -1,4 +1,5 @@
-    :root{
+    /* Alap: dark mode */
+	:root{
       --bg:#0b0f14;          /* háttér */
       --panel:#0f151d;       /* kártyák */
       --text:#d9e1ea;        /* alap szöveg */
@@ -11,7 +12,26 @@
       --radius: 18px;
       --radius-lg: 26px;
       --container: 1100px;
+	  --input-bg: #0b1117;
     }
+	
+	/* Light mode */
+	:root.light {
+		--bg: #f5f7fa;
+		--panel: #ffffff;
+		--text: #1c1c1c;
+		--muted: #5a6a7a;
+		--brand: #0077ff;
+		--brand-2: #00d4b7;
+		--accent: #ff8800;
+		--red: #e63946;
+		--shadow: 0 10px 30px rgba(0,0,0,.35);
+		--radius: 18px;
+		--radius-lg: 26px;
+		--container: 1100px;
+		--input-bg: #ffffff;
+	}
+	
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
@@ -74,7 +94,7 @@
     .project img{aspect-ratio: 16/10; object-fit:cover; width:100%}
     /* Contact */
     form{display:grid; gap:12px}
-    input, textarea{width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.14); background:#0b1117; color:var(--text)}
+    input, textarea{width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.14); background: var(--input-bg); color:var(--text)}
     input::placeholder, textarea::placeholder{color:#6f7f92}
     .form-row{display:grid; grid-template-columns:1fr 1fr; gap:12px}
     .form-note{color:var(--muted); font-size:.9rem}
