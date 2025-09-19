@@ -31,6 +31,29 @@
 		--container: 1100px;
 		--input-bg: #ffffff;
 	}
+		.theme-toggle {
+	  margin-left: 15px;
+	  padding: 8px 12px;
+	  border-radius: 50%;
+	  border: none;
+	  background: var(--panel);
+	  color: var(--text);
+	  font-size: 18px;
+	  cursor: pointer;
+	  transition: background 0.3s, transform 0.2s;
+	}
+	.theme-toggle:hover {
+	  background: rgba(255,255,255,0.1);
+	  transform: scale(1.1);
+	}
+
+	/* Mobilon ne tolja el a menüt */
+	@media (max-width: 640px) {
+	  .theme-toggle {
+		margin-left: auto;  /* a jobb szélre tolja */
+	  }
+	}
+
 	
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
