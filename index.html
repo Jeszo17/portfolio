@@ -28,6 +28,8 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
+	  <!-- váltó gomv -->
+	  	<button id="themeToggle" class="theme-toggle" aria-label="Váltás sötét/Világos mód között">🌙Dark /☀️Light</button>
     </div>
   </header>
 
@@ -46,7 +48,6 @@
   <section class="hero" id="home">
     <div class="container hero-inner">
       <div>
-		  <button id="themeToggle" class="btn">🌙Dark /☀️Light</button>
         <span class="eyebrow">Freelancer Web Developer</span>
         <h1>Hi! I am <span style="color:var(--brand)">Bence</span> – IT Specialist & Web developer </h1>
         <p class="lead">Responsive websites, internal tools, and building the online presence of small businesses. Clean code, fast loading, easy maintainability.</p>
@@ -279,23 +280,24 @@
     }
 	
 	// Sötét/világos mód
-	const themeToggle = document.getElementById('themeToggle');
-		themeToggle.addEventListener('click', () => {
-		  document.documentElement.classList.toggle('light');
-		  
-		  // mentés localStorage-be, hogy frissítés után is megmaradjon
-		  if (document.documentElement.classList.contains('light')) {
-			localStorage.setItem('theme', 'light');
-		  } else {
-			localStorage.setItem('theme', 'dark');
-		  }
-		});
+	  const themeToggle = document.getElementById('themeToggle');
+	  
+	  themeToggle.addEventListener('click', () => {
+		document.documentElement.classList.toggle('light');
+		themeToggle.textContent = document.documentElement.classList.contains('light') ? '☀️' : '🌙';
 
-		// oldal betöltésekor visszaállítjuk a felhasználó választását
-		if (localStorage.getItem('theme') === 'light') {
-		  document.documentElement.classList.add('light');
+		if (document.documentElement.classList.contains('light')) {
+		  localStorage.setItem('theme', 'light');
+		} else {
+		  localStorage.setItem('theme', 'dark');
 		}
+	  });
 
+	  // betöltéskor beállítjuk
+	  if (localStorage.getItem('theme') === 'light') {
+		document.documentElement.classList.add('light');
+		themeToggle.textContent = '☀️';
+	  }
   </script>
 </body>
 </html>
