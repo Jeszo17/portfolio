@@ -9,7 +9,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-	<link rel="stylesheet" href="responsive.css">
 </head>
 <body>
   <!-- NAV -->
@@ -19,6 +18,7 @@
         <div class="logo" aria-hidden="true"><span>BJ</span></div>
         <span>Portfolio</span>
       </a>
+	  <button id="themeToggle" class="btn">🌙Dark /☀️Light</button>
       <nav>
         <button class="mobile-toggle" aria-expanded="false" aria-controls="mobileMenu" id="menuBtn">Menu</button>
         <ul id="desktopMenu">
@@ -277,6 +277,25 @@
         form.reset();
       });
     }
+	
+	// Sötét/világos mód
+	const themeToggle = document.getElementById('themeToggle');
+		themeToggle.addEventListener('click', () => {
+		  document.documentElement.classList.toggle('light');
+		  
+		  // mentés localStorage-be, hogy frissítés után is megmaradjon
+		  if (document.documentElement.classList.contains('light')) {
+			localStorage.setItem('theme', 'light');
+		  } else {
+			localStorage.setItem('theme', 'dark');
+		  }
+		});
+
+		// oldal betöltésekor visszaállítjuk a felhasználó választását
+		if (localStorage.getItem('theme') === 'light') {
+		  document.documentElement.classList.add('light');
+		}
+
   </script>
 </body>
 </html>
