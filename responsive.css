@@ -1,0 +1,15 @@
+    /* ------- Responsive ------- */
+    @media (max-width: 980px){
+      .hero-inner{grid-template-columns:1fr}
+      .stats{grid-template-columns:repeat(3,1fr)}
+      .cards{grid-template-columns:1fr 1fr}
+      .projects{grid-template-columns:1fr 1fr}
+      .about{grid-template-columns:1fr}
+      .skills{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 640px){
+      nav ul{display:none}
+      .mobile-toggle{display:inline-block}
+      .stats{grid-template-columns:1fr 1fr}
+      .cards, .projects, .skills{grid-template-columns:1fr}
+    }
